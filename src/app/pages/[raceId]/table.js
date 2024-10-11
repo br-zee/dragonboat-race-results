@@ -17,7 +17,9 @@ export default function Table({data}) {
     // useEffect(() => {
     //     subscribeToRaceData();
     // }, [supabase, data])
-    
+
+    const displayList = raceData.map(race => race.display);
+    if (displayList.includes(true) || data.crew != '*') {
     return (
         <>
         <h1 className="heat-title"><b>Heat {data.heat}: {data.race_type}</b></h1>
@@ -34,24 +36,23 @@ export default function Table({data}) {
             </thead>
             <tbody>
                 {
-                    raceData.map((data, index) => {
-                        if (data.display != false) {
-                            return (
-                                <tr key={'row_'+index}>
-                                    <td><b>{data.crew}</b></td>
-                                    <td>{data.lane}</td>
-                                    <td>{data.race_time}</td>
-                                    <td>{data.placement}</td>
-                                    <td>{data.next_heat}</td>
-                                    {/* <td>{data.estimated_start_time}</td> */}
-                                </tr>
-                            )  
-                        }
-                    })
+                raceData.map((data, index) => {
+                    return (
+                        <tr key={'row_'+index}>
+                            <td><b>{data.crew}</b></td>
+                            <td>{data.lane}</td>
+                            <td>{data.race_time}</td>
+                            <td>{data.placement}</td>
+                            <td>{data.next_heat}</td>
+                            {/* <td>{data.estimated_start_time}</td> */}
+                        </tr>
+                    )  
+                })
                 }
             </tbody>
         </table>
         </> 
     )
+}
 }
 
