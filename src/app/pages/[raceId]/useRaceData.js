@@ -5,25 +5,27 @@ export const useRaceData = () => {
     const [raceData, setRaceData] = useState([{heat: 'NA', crew: 'NA', lane: 'NA', time: 'NA', placement: 'NA', next_heat: 'NA', estimated_start_time: 'NA', race_type: 'NA', display: true}]);
 
     const getRaceData = async (heat, selectCrew, raceId) => {
-        if (selectCrew == '*') {
-            const { data, error } = await supabase
-            .rpc('get_race_data_all_crews', {
-                selectheat: heat,
-                raceid: raceId
-            })
+        if (heat != undefined) {
+            if (selectCrew == '*') {
+                const { data, error } = await supabase
+                .rpc('get_race_data_all_crews', {
+                    selectheat: heat,
+                    raceid: raceId
+                })
 
-            if (error) { console.error(error) }
-            if (data) { setRaceData(data) }
-        }
-        else {
-            const { data, error } = await supabase
-            .rpc('get_race_data', {
-                selectheat: heat,
-                selectcrew: selectCrew,
-                raceid: raceId
-            })
-            if (error) { console.error(error) }
-            if (data) { setRaceData(data) }
+                if (error) { /*console.error(error)*/ }
+                if (data) { setRaceData(data) }
+            }
+            else {
+                const { data, error } = await supabase
+                .rpc('get_race_data', {
+                    selectheat: heat,
+                    selectcrew: selectCrew,
+                    raceid: raceId
+                })
+                if (error) { /*console.error(error)*/ }
+                if (data) { setRaceData(data) }
+            }
         }
     }
 
@@ -54,21 +56,23 @@ export const useRaceData = () => {
     const [heatList, setHeatList] = useState([{heat: 0, race_type: 'NA'}]);
 
     const getHeatList = async (raceid, crew) => {
-        if (crew == '*') {
-            const { data, error } = await supabase
-            .rpc('list_heats', {
-                raceid: raceid
-            })
-            if (data) { setHeatList(data) }
-        }
-        else {
-            const { data, error } = await supabase
-            .rpc('list_heats_select_crew', {
-                raceid: raceid,
-                selectcrew: crew
-            })
-            if (data) { setHeatList(data) }
-            if (error) { console.log(error) }
+        if (raceid != undefined && crew != undefined) {
+            if (crew == '*') {
+                const { data, error } = await supabase
+                .rpc('list_heats', {
+                    raceid: raceid
+                })
+                if (data) { setHeatList(data) }
+            }
+            else {
+                const { data, error } = await supabase
+                .rpc('list_heats_select_crew', {
+                    raceid: raceid,
+                    selectcrew: crew
+                })
+                if (data) { setHeatList(data) }
+                if (error) { /*console.log(error)*/ }
+            }
         }
     }
 
@@ -100,7 +104,7 @@ export const useRaceData = () => {
         .rpc('get_all_crews', {
             raceid: raceid
         })
-        if (error) { console.log(error) }
+        if (error) { /*console.log(error)*/ }
         if (data) { setCrewList(data) }
     }
 

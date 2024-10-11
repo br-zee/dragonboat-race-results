@@ -6,20 +6,25 @@ export const useRaces = () => {
     const [races, setRaces] = useState([{'max': -1, 'racename': 'N/A', 'raceId': -1}]);
 
     const getRaces = async () => {
-        const { data, error } = await supabase
-        .from('racenames')
-        .select('raceId, raceName')
-        .order('raceId', { ascending: true })
-        if (error) {console.error(error)}
+        try {
+            const { data, error } = await supabase
+            .from('racenames')
+            .select('raceId, raceName')
+            .order('raceId', { ascending: true })
 
-        setRaces(data);
+            if (error) {/*console.error(error)*/}
+            setRaces(data);
+        }
+        catch(err) {
+            console.log('error');
+        }
     }
 
     const getCurrentRace = async () => {
         const { data, error } = await supabase
         .rpc('get_current_race')
-        if (error) {console.error(error)}
 
+        if (error) {/*console.error(error)*/}
         setRace(data);
     }
 

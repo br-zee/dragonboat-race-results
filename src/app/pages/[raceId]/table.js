@@ -8,7 +8,7 @@ export default function Table({data}) {
 
     useEffect(() => {
         getRaceData(data.heat, data.crew, data.race_id)
-    }, [data.heat])
+    }, [data.heat, supabase])
 
     useEffect(() => {
         setRaceData(raceData);
@@ -36,17 +36,19 @@ export default function Table({data}) {
             </thead>
             <tbody>
                 {
-                raceData.map((data, index) => {
-                    return (
-                        <tr key={'row_'+index}>
-                            <td><b>{data.crew}</b></td>
-                            <td>{data.lane}</td>
-                            <td>{data.race_time}</td>
-                            <td>{data.placement}</td>
-                            <td>{data.next_heat}</td>
-                            {/* <td>{data.estimated_start_time}</td> */}
-                        </tr>
-                    )  
+                raceData.map((rData, index) => {
+                    if (rData.display != false || data.crew != '*') {
+                        return (
+                            <tr key={'row_'+index}>
+                                <td><b>{rData.crew}</b></td>
+                                <td>{rData.lane}</td>
+                                <td>{rData.race_time}</td>
+                                <td>{rData.placement}</td>
+                                <td>{rData.next_heat}</td>
+                                {/* <td>{rData.estimated_start_time}</td> */}
+                            </tr>
+                        )  
+                    }
                 })
                 }
             </tbody>
