@@ -41,8 +41,7 @@ export const useRaceData = () => {
         },
         (payload) => {
             setRaceData([...raceData, payload.new])
-            console.log(payload);
-            // raceData[payload['old']['id']] = payload['new']['raceName'];
+            // console.log(payload);
         }
         ).subscribe();
 

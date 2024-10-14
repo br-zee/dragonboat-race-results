@@ -6,9 +6,10 @@
 .race-header h1 {
     font-size: 5vw;
 }
-#crews {
+#crew {
     color: gray;
     margin: 20px 10px 0 10px;
+    padding-left: 2px;
 }
 .race-header button {
     background: var(--foreground);
