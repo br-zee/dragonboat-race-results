@@ -8,7 +8,7 @@ export const useRaces = () => {
     const getRaces = async () => {
         const { data, error } = await supabase
         .from('racenames')
-        .select('raceId, raceName')
+        .select('raceId, raceName, display')
         .order('raceId', { ascending: true })
 
         if (error) {/*console.error(error)*/}
@@ -45,6 +45,7 @@ export const useRaces = () => {
     return {
         race,
         races,
+        setRaces,
         getRaces,
         getCurrentRace,
         subscribeToRaces
