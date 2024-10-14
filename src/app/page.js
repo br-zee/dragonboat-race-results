@@ -31,7 +31,7 @@ export default function Landing() {
   const handleKeyUp = ((e) => {
     const input = document.getElementById('crew');
     const text = e.target.value
-    if (text == '') { filterCrew('*') } 
+    if (text == '' || text == '--DEFAULT--') { filterCrew('*') } 
     else { filterCrew('%'+text+'%'); }
     input.focus();
   })
