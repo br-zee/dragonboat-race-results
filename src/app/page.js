@@ -110,9 +110,7 @@ export default function Landing() {
             // isLoading 
             // ? 
             // <div>Loading...</div> 
-            // :
-            
-            
+            // :            
             heatList.map((i, index) => {
                 return (
                     <Table key={'heat_'+index} 

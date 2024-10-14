@@ -7,6 +7,10 @@ export default function Table({data}) {
     const {raceData, setRaceData, getRaceData, subscribeToRaceData} = useRaceData();
     const {heatList, setHeatList} = useRaceData();
 
+    let bg_color = 'white';
+    // if () { bg_color = 'white' }
+    // else { bg_color = 'black' }
+
     useEffect(() => {
         getRaceData(data.heat, data.crew, data.race_id)
     }, [data.heat, supabase])
@@ -39,9 +43,10 @@ export default function Table({data}) {
             <tbody>
                 {
                 raceData.map((rData, index) => {
-                    if (rData.display != false || data.crew != '*') {
+                    index % 2 == 0 ? bg_color = '#d4deeb' : bg_color = '#b7c6da';
+                    if ((rData.display != false || data.crew != '*')) {
                         return (
-                            <tr key={'row_'+index}>
+                            <tr key={'row_'+index} style={{backgroundColor: bg_color}} className="crew-row">
                                 <td><b>{rData.crew}</b></td>
                                 <td>{rData.lane}</td>
                                 <td>{rData.race_time}</td>

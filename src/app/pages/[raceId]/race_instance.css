@@ -41,8 +41,8 @@ tr {
     color: #2b2926;
     background-color: var(--foreground);
 }
-tr:hover {
-    background-color: rgb(190, 186, 186);
+.crew-row:hover {
+    background-color: rgb(211, 211, 212) !important;
 }
 
 .heat-title {
