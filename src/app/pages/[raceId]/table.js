@@ -5,6 +5,7 @@ import './race_instance.css';
 
 export default function Table({data}) {
     const {raceData, setRaceData, getRaceData, subscribeToRaceData} = useRaceData();
+    const {heatList, setHeatList} = useRaceData();
 
     useEffect(() => {
         getRaceData(data.heat, data.crew, data.race_id)
@@ -14,9 +15,10 @@ export default function Table({data}) {
         setRaceData(raceData);
     }, [raceData, data])
 
-    // useEffect(() => {
-    //     subscribeToRaceData();
-    // }, [supabase, data])
+    useEffect(() => {
+        subscribeToRaceData();
+        getRaceData(data.heat, data.crew, data.race_id);
+    }, [supabase, data])
 
     const displayList = raceData.map(race => race.display);
     if (displayList.includes(true) || data.crew != '*') {

@@ -2,12 +2,14 @@
 .race-box {
     width: 25vw;
     min-width: 150px;
-    height: 100px;
-    background: var(--foreground);
-    color: var(--background);
+    height: 130px;
+    background: #132641;
+    color: var(--foreground);
     margin: 10px;
     padding: 5px 10px;
     overflow: hidden;
+    border-top: 80px solid var(--foreground);
+    text-align: center;
 }
 .race-box h1 {
     font-size: 1.5rem;
