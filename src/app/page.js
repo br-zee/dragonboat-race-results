@@ -75,7 +75,7 @@ export default function Landing() {
 
   return (
     <>
-      <h1 className="header">NCIDBF Race Results</h1>
+      <h1 className="header">CDBA Race Results</h1>
           <div className='race-header'>
             <h1>{title}</h1>
 
