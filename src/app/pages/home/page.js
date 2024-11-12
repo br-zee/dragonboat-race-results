@@ -26,7 +26,7 @@ export default function Home() {
 
     return ( 
         <>
-        <h1 className='header'> NCIDBF Race History</h1>
+        <h1 className='header'> CDBA Race History</h1>
         <div className="race-display">
             {races.map((race, i) => {
                 console.log(race.display)
