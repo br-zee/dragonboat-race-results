@@ -8,7 +8,7 @@ export const useRaces = () => {
     const getRaces = async () => {
         const { data, error } = await supabase
         .from('racenames')
-        .select('raceId, raceName, display')
+        .select('raceId, raceName, display, imageId')
         .order('raceId', { ascending: true })
 
         if (error) {/*console.error(error)*/}
@@ -34,7 +34,7 @@ export const useRaces = () => {
             table: 'racenames',
         },
         (payload) => {
-            console.log(payload);
+            // console.log(payload);
             setRaces([...races, payload.new]);
         }
         ).subscribe();

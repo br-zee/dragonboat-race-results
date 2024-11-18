@@ -2,21 +2,57 @@
 .race-box {
     width: 25vw;
     min-width: 150px;
-    height: 130px;
     background: #132641;
+    border-top: 10px solid #021732;
+    border-bottom: 5px solid #021732;
     color: var(--foreground);
     margin: 10px;
     padding: 5px 10px;
     overflow: hidden;
-    border-top: 80px solid var(--foreground);
     text-align: center;
-}
-.race-box h1 {
-    font-size: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 10px 7px #010d1d;
 }
 .race-box:hover {
     animation: hoverAnim 0.1s linear;
     animation-fill-mode: forwards;
+}
+.race-box-text {
+    width: 100%;
+    background: #fdfbf5;
+    color: var(--background);
+    border-block: 0.3vw solid #dbd5c4;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+.race-box-text h1 {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.7vw;
+    align-items: center;
+}
+.race-box-text h1::after, .race-box-text h1::before {
+    content: "";
+    width: 5vw;
+    height: 0.1vh;
+    background-color: #F5D680;
+    /* top: 50%; */
+    /* vertical-align: middle; */
+}
+.race-box-text h1::after {
+    margin-left: 10px;
+}
+.race-box-text h1::before {
+    margin-right: 10px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    max-height: 80%;
 }
 
 @keyframes hoverAnim {
@@ -24,6 +60,13 @@
 
     }
     100% {
-        opacity: 45%;
+        opacity: 70%;
+    }
+}
+
+@media screen and (min-width: 620px) {
+    .race-box-text h1::after, .race-box-text h1::before {
+        width: 3vw;
+        height: 0.2vh;
     }
 }

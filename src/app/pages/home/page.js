@@ -26,15 +26,15 @@ export default function Home() {
 
     return ( 
         <>
-        <h1 className='header'> CDBA Race History</h1>
+        <h1 className='header'>CDBA Race History</h1>
         <div className="race-display">
             {races.map((race, i) => {
-                console.log(race.display)
                 if (race.display != false) {
                     return (
                         <RaceBox key={'race_' + i}
                             displayText={race.raceName}
                             raceId={race.raceId}
+                            image={race.imageId != null ? 'https://drive.google.com/thumbnail?id='+race.imageId+'&sz=w1000' : '/static/TEMP_IMAGE.png'}
                         />
                     )
                 }
