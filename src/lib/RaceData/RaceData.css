@@ -1,0 +1,22 @@
+.race-header {
+    text-align: center;
+    margin-block: 20px;
+    font-size: 10vw;
+    color: white;
+}
+.race-header h1 {
+    font-size: 15vw;
+    color: var(--gold);
+}
+.heats {
+    min-height: 100vh;
+}
+
+@media screen and (min-width: 960px) {
+    .race-header h1 {
+        font-size: 5vw;
+    }
+    .race-header {
+        font-size: 5vw;
+    }
+}

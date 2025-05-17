@@ -1,6 +1,7 @@
 
 .race-box {
-    width: 25vw;
+    position: relative;
+    aspect-ratio: 16/8;
     min-width: 150px;
     background: #132641;
     border-top: 10px solid #021732;
@@ -11,7 +12,7 @@
     overflow: hidden;
     text-align: center;
     border-radius: 20px;
-    box-shadow: 10px 7px #010d1d;
+    box-shadow: 10px 7px 8px #010d1d;
 }
 .race-box:hover {
     animation: hoverAnim 0.1s linear;
@@ -31,7 +32,7 @@
 .race-box-text h1 {
     display: flex;
     flex-direction: row;
-    font-size: 1.7vw;
+    font-size: 3.7vw;
     align-items: center;
 }
 .race-box-text h1::after, .race-box-text h1::before {
@@ -49,10 +50,9 @@
     margin-right: 10px;
 }
 
-img {
+.race-image {
     width: 100%;
-    height: 100%;
-    max-height: 80%;
+    border-radius: 8px;
 }
 
 @keyframes hoverAnim {
@@ -68,5 +68,8 @@ img {
     .race-box-text h1::after, .race-box-text h1::before {
         width: 3vw;
         height: 0.2vh;
+    }
+    .race-box-text h1 {
+        font-size: 1.7vw;
     }
 }
