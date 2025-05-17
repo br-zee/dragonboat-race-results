@@ -1,6 +1,6 @@
 import { Roboto_Condensed } from 'next/font/google';
-import Navbar from './lib/nav/page';
-import Footer from './lib/footer/page';
+import Navbar from '../lib/nav/page';
+import Footer from '../lib/footer/footer';
 import "./globals.css";
 
 
@@ -24,9 +24,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${robotoCondensed.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <div className="page-content">
+          <Navbar />
+          <div className="page-children">
+            {children}
+          </div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

@@ -1,43 +1,21 @@
-/* ---------  PAGE  ---------- */
-.race-header {
-    text-align: center;
-    margin-block: 20px;
-}
-.race-header h1 {
-    font-size: 5vw;
-}
-#crew {
-    color: gray;
-    margin: 20px 10px 0 10px;
-    padding-left: 2px;
-}
-.race-header button {
-    background: var(--foreground);
-    color: var(--background);
-    padding-inline: 10px;
-    border-radius: 5px;
-}
-.heats {
-    min-height: 100vh;
-}
-#default-option {
-    position: sticky;
-    top: 0;
-}
-
-
 /* ---------  TABLE  ---------- */
-table, th, td {
-    border: 2px solid gray;
+td:not(#heat-title) {
+    border: 1.5px solid rgba(84, 105, 129, 0.35);
     padding-inline: 5px;
 }
 table {
     width: 95%;
     margin-block: 0 40px;
-    margin-inline: auto
+    margin-inline: auto;
+    border-collapse: collapse;
+    box-shadow:
+        10px 15px 25px rgba(0, 0, 0, 0.45),
+        0 0 10px rgba(84, 105, 129, 0.2); /* soft ambient glow */
+    border-radius: 10px;
+    overflow: hidden;
 }
 tr {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #2b2926;
     background-color: var(--foreground);
 }
@@ -46,13 +24,10 @@ tr {
 }
 
 .heat-title {
-    width: 95%;
-    margin: 0 auto;
     text-align: center;
-    background: #c1d8f6;
-    color: var(--background);
+    background: linear-gradient(to bottom, #546981, #3a4c6d);
+    color: lightgray;
     font-size: 4vw;
-    border-top: 3px solid #6ca5f7;
 }
 
 .crew-title {
@@ -84,9 +59,6 @@ tr {
 
 /* Medium Screen */
 @media screen and (min-width: 800px) {
-    .race-header h1 {
-        font-size: 3vw;
-    }
     table {
         width: 80%;
     }

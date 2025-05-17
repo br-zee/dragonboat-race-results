@@ -1,4 +1,4 @@
-import { supabase } from "@/app/lib/stores/supabase";
+import { supabase } from "@/lib/stores/supabase";
 import { useState } from "react";
 
 export const useRaceData = () => {
@@ -23,7 +23,9 @@ export const useRaceData = () => {
                     selectcrew: selectCrew,
                     raceid: raceId
                 })
-                if (error) { /*console.error(error)*/ }
+                if (error) { 
+                    // console.error(error) 
+                }
                 if (data) { setRaceData(data) }
             }
         }
@@ -61,7 +63,11 @@ export const useRaceData = () => {
                 .rpc('list_heats', {
                     raceid: raceid
                 })
-                if (data) { setHeatList(data) }
+
+                if (error) { 
+                    // console.error(error); 
+                }
+                if (data) { setHeatList(data); }
             }
             else {
                 const { data, error } = await supabase

@@ -1,15 +1,13 @@
 import { useEffect, useState, useRef } from "react"
-import { useRaceData } from './useRaceData';
-import { supabase } from "@/app/lib/stores/supabase";
-import './race_instance.css';
+import { useRaceData } from '../../hooks/useRaceData';
+import { supabase } from "@/lib/stores/supabase";
+import './table.css';
 
-export default function Table({data}) {
+export default function Table({data, setIsLoading}) {
     const {raceData, setRaceData, getRaceData, subscribeToRaceData} = useRaceData();
     const {heatList, setHeatList} = useRaceData();
 
     let bg_color = 'white';
-    // if () { bg_color = 'white' }
-    // else { bg_color = 'black' }
 
     useEffect(() => {
         getRaceData(data.heat, data.crew, data.race_id)
@@ -25,12 +23,14 @@ export default function Table({data}) {
     }, [supabase, data])
 
     const displayList = raceData.map(race => race.display);
-    if (displayList.includes(true) || data.crew != '*') {
+    if (displayList.includes(true)) {
     return (
         <>
-        <h1 className="heat-title"><b>Heat {data.heat}: {data.race_type}</b></h1>
         <table>
             <thead>
+                <tr className="heat-title">
+                    <td id="heat-title" colSpan='5'><b>Heat {data.heat}: {data.race_type}</b></td>
+                </tr>
                 <tr>
                     <td className='crew-title'>Crew</td>
                     <td className='lane-title'>Lane</td>
@@ -44,7 +44,7 @@ export default function Table({data}) {
                 {
                 raceData.map((rData, index) => {
                     index % 2 == 0 ? bg_color = '#d4deeb' : bg_color = '#b7c6da';
-                    if ((rData.display != false || data.crew != '*')) {
+                    if ((rData.display != false)) {
                         return (
                             <tr key={'row_'+index} style={{backgroundColor: bg_color}} className="crew-row">
                                 <td><b>{rData.crew}</b></td>
